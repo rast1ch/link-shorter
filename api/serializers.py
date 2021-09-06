@@ -2,19 +2,24 @@ from rest_framework import serializers
 from .models import Link, LinkUse
 
 
-
 class LinkUseSerializer(serializers.ModelSerializer):
     class Meta:
         model = LinkUse
-        fields = ['order', 'time']
+        fields = ['id', 'time']
+
+    def update(self, instance, validated_data):
+        pass
+
 
 class LinkInfoSerializer(serializers.ModelSerializer):
-    link_use = LinkUseSerializer(many = True,
-                                 read_only = False)
+    jumps = LinkUseSerializer(many=True,
+                              read_only=True, )
 
-    
+    def update(self, instance, validated_data):
+        instance.link_to = validated_data.get('link_to', instance.link_to)
+        instance.save()
+        return instance
 
     class Meta:
         model = Link
-        fields = ['url_tocken','link_to' ,'link_use']
-        extra_kwargs = {'link_use': {'read_only':True},}
+        fields = ['tocken', 'url_tocken', 'link_to', 'jumps', ]
