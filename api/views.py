@@ -70,6 +70,17 @@ def create_link(request):
     else:
         print(serializer.errors)
 
+# service api
+@api_view(['GET'])
+def get_redirect_link(request, slug):
+    try:
+        link = Link.objects.get(url_tocken__exact=slug)
+        serializer = LinkInfoSerializer(link, many=False)
+        return Response(serializer.data)
+    except Link.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    
 
 @api_view(['GET'])
 def link_jump(request, slug):
