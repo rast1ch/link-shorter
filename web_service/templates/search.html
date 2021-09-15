@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/search.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+    <h2 id="heading">Get an item by the token</h2>
+    <form action="" method="post">
+     {% for field in data.form %}
+         {{ field }}
+         <input value="Get" type="submit" class="btn btn-primary">
+
+     {% endfor %}
+    </form>
+
+
+</div>
+{% endblock %}

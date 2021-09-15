@@ -1,0 +1,21 @@
+body {
+    font-size: 1.3rem !important;
+}
+
+p{
+    margin-top:40px !important;
+    color:gray;
+}
+#visitors{
+    margin-top: 40px;
+}
+.warning{
+    color: red;
+    font-weight: bold;
+}
+.btn{
+    margin-top: 20px !important;
+}
+.table{
+    margin-top: 20px; !important;
+}

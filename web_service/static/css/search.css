@@ -1,0 +1,11 @@
+#tocken{
+    width:50%;
+    height: 38px;
+    position: relative;
+    top:2px;
+    padding:0;
+    border:1px solid black;
+}
+#heading{
+    margin-bottom: 40px;
+}

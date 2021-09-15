@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+{% block title %}
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/update.css') }}">
+    <style>
+    #url_to{
+        width:100%;
+    }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+    <form action="" method="post">
+        <table>
+        <tr>
+            <td>Tocken<span class="warning">! </span>: </td>
+            <td>{{ data.tocken }}</td>
+        </tr>
+        <tr>
+            <td>Shorted link: </td>
+            <td>{{ data.url }}</td>
+        </tr>
+            {% for field in data.form %}
+        <tr>
+            <td>Source link: </td>
+            <td>{{ field }}</td>
+        </tr>
+            {% endfor %}
+    </table>
+    <input value="Save" type="submit" class="btn btn-primary">
+    </form>
+     <p>
+        <span class="warning">WARNING! </span>You should write down the tocken or remember it.
+        You won`t be able to get information, delete or change the shorted link without tocken
+    </p>
+    </div>
+{% endblock %}

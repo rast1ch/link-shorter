@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/info.css') }}">
+{% endblock styles%}
+{% block content %}
+    <div class="content">
+    <table>
+        <tr>
+            <td>Tocken<span class="warning">! </span>:</td>
+            <td>{{ data.tocken }}</td>
+        </tr>
+        <tr>
+            <td>Shorted link :</td>
+            <td>{{ data.url }}</td>
+        </tr>
+        <tr>
+            <td>Source link :</td>
+            <td>{{ data.link_to }}</td>
+        </tr>
+    </table>
+        <a href="{{ url_for('update', tocken=data.tocken) }}" class="btn btn-primary">Change</a>
+    <p>
+        <span class="warning">WARNING! </span>You should write down the tocken or remember it.
+        You won`t be able to get information, delete or change the shorted link without tocken
+    </p>
+        <h2 id="visitors">Visitors</h2>
+        <table class="table table-striped">
+    <thead>
+    <tr>
+        <td>Num./#</td>
+        <td>Time</td>
+    </tr>
+    </thead>
+    <tbody >
+        {% for i in data.jumps %}
+            <tr>
+            <td>{{ i.order }}</td>
+            <td>{{ i.time }}</td>
+            </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    </div>
+{% endblock content %}

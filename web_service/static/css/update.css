@@ -1,0 +1,15 @@
+body {
+    font-size: 1.3rem !important;
+}
+
+p{
+    margin-top:40px !important;
+    color:gray;
+}
+.btn{
+    margin-top: 20px !important;
+}
+.warning{
+    color: red;
+    font-weight: bold;
+}
