@@ -8,5 +8,6 @@ class Link(models.Model):
 
 
 class LinkUse(models.Model):
+    order = models.PositiveIntegerField(default=0)
     link = models.ForeignKey(Link, related_name='jumps', on_delete=models.CASCADE, null=True)
     time = models.DateTimeField(auto_now_add=True)

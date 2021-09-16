@@ -5,7 +5,7 @@ from .models import Link, LinkUse
 class LinkUseSerializer(serializers.ModelSerializer):
     class Meta:
         model = LinkUse
-        fields = ['id', 'time']
+        fields = ['order', 'time']
 
     def update(self, instance, validated_data):
         pass
