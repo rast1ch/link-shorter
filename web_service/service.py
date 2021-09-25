@@ -1,9 +1,8 @@
-import time
+
 
 from flask import Flask
 import flask
 from flask import request
-import asyncio
 import requests
 import json
 
@@ -26,7 +25,7 @@ class SearchForm(Form):
 def home():
     form = CreationForm(request.form)
     if request.method == 'POST' and form.validate():
-        ready_json = json.dumps({"link_to": form.url_to.data})
+        ready_json = {"link_to": form.url_to.data}
         r = requests.post(url='http://127.0.0.1:8000/api/create/', json=ready_json)
         if r.status_code == 201:
             api_dict = json.loads(r.content)

@@ -47,14 +47,13 @@ def update_link(request, tocken):
         link = Link.objects.get(tocken__exact=tocken)
     except Link.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    data = json.loads(request.data)
+    data = request.data
     serializer = LinkInfoSerializer(link, data=data, many=False)
 
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
-        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -65,8 +64,7 @@ def create_link(request):
         'tocken': uuid.uuid4(),
         'url_tocken': f'{slug}',
     }
-    data['link_to'] = json.loads(request.data)['link_to']
-    print(data['link_to'])
+    data['link_to'] = request.data['link_to']
     serializer = LinkInfoSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
